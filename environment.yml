@@ -1,0 +1,4 @@
+name: Hase-code-2020
+dependencies:
+  - numpy
+  - pandas
