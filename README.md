@@ -4,7 +4,7 @@
 
 conda env create --file environment.yml
 
-source activate Hase-code-2020
+source activate Hash-code-2020
 
 python main.py
 
