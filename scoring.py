@@ -20,9 +20,10 @@ def efficiency_remaining_days(days: int, library: Library):
     score = 0
     days_of_scan = days - library.sign_up_days
     books_scanned = days_of_scan * library.books_per_day
-    list_books = library.get_books()
+    list_books = library.book_list
     for i in range(books_scanned):
-        score += list_books[i].score
+        if i < len(list_books):
+            score += list_books[i].score
     return score
 
 
