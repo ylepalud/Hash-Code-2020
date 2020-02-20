@@ -29,14 +29,16 @@ if __name__ == '__main__':
     # Solving
     print("Solving solution for ", path_to_input_file.split(".")[0])
     result_value = ResultValue()
-    libraries = map_value.libraries.values()
+    libraries = list(map_value.libraries.values())
     remaining_days_before_next_library_submission = 0
     last_elected_library = None
     submited_libraries = []
 
     for day_number in range(map_value.total_scanning_day):
+        if len(libraries) == 0:
+            pass
         # Si on peut soumettre une nouvelle library
-        if remaining_days_before_next_library_submission == 0:
+        elif remaining_days_before_next_library_submission == 0:
             # On recalcule efficiency pour chaque library et on trie les library
             for library in libraries:
                 library.efficiency = scoring.efficiency_library(library, map_value.total_scanning_day - day_number)
@@ -44,6 +46,7 @@ if __name__ == '__main__':
 
             last_elected_library = libraries[0]
             remaining_days_before_next_library_submission = last_elected_library.sign_up_days
+            result_value.add_library(last_elected_library)
             libraries = libraries[1:]
 
             for library in libraries:

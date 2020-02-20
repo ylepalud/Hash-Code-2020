@@ -42,7 +42,7 @@ class Library:
             self.index_last_send_book += 1
 
     def __str__(self):
-        result = str(self.id) + " " + str(self.number_of_books) + "\n"
+        result = str(self.id) + " " + str(len(self.book_list)) + "\n"
         for book in self.book_list:
             result += str(book.id) + " "
         result += "\n"
