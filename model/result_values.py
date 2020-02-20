@@ -15,3 +15,4 @@ class ResultValue:
             file.write(str(len(self.libraries)) + '\n')
             for library in self.libraries:
                 file.write(str(library))
+        print("Solution store in ", output_file_name)
