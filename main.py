@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # Solving
     print("Solving solution for ", path_to_input_file.split(".")[0])
     result_value = ResultValue()
-    libraries = result_value.libraries
+    libraries = map_value.libraries.values()
     remaining_days_before_next_library_submission = 0
     last_elected_library = None
     submited_libraries = []
@@ -42,11 +42,12 @@ if __name__ == '__main__':
                 library.efficiency = scoring.efficiency_library(library, map_value.total_scanning_day - day_number)
             libraries.sort(key=lambda x: x.efficiency, reverse=False)
 
-            if last_elected_library is not None:
-                submited_libraries.append(last_elected_library)
-
             last_elected_library = libraries[0]
             remaining_days_before_next_library_submission = last_elected_library.sign_up_days
+            libraries = libraries[1:]
+
+            for library in libraries:
+                library.remove_list_books(last_elected_library.book_list)
 
         remaining_days_before_next_library_submission -= 1
 
