@@ -13,11 +13,15 @@ class Library:
         self.book_list.append(book)
 
     def get_books(self):
-        return self.book_list
+        for book in self.book_list:
+            yield book
 
     def sort_books(self):
         self.book_list.sort(key=lambda x: x.score, reverse=False)
 
     def __str__(self):
-        # TODO pour simplifier le write
-        pass
+        result = str(self.id) + " " + str(self.number_of_books) + "\n"
+        for book in self.book_list:
+            result += str(book.id) + " "
+        result += "\n"
+        return result

@@ -20,6 +20,7 @@ class MapValue:
     def get_library(self, library_id: int):
         return self.libraries[library_id]
 
+
     def add_book(self, book: Book):
         self.books[book.id] = book
 

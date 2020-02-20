@@ -2,6 +2,7 @@ import numpy as np
 import argparse
 from Parser import Parser
 from Writer import Writer
+from model.result_values import ResultValue
 
 
 def show_banner():
@@ -21,13 +22,17 @@ if __name__ == '__main__':
     show_banner()
     path_to_input_file = get_args()
 
-    parser = Parser(path_to_input_file)
-    parser.parse()
     # Parsing
+    parser = Parser(path_to_input_file)
+    map_value = parser.parse()
+
     # Solving
+    result_value = ResultValue()
+    result_value.add_library(map_value.get_library(0))
+    result_value.add_library(map_value.get_library(1))
+
     # Scoring
 
     # Write output
-    writer = Writer()
-    writer.write_out_put(path_to_input_file, "coucou")
+    result_value.write_result(path_to_input_file)
 

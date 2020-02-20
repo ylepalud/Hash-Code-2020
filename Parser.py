@@ -15,13 +15,13 @@ class Parser:
         map_value = MapValue()
 
         with io.open(self.input_file, "r", encoding="utf-8") as file:
-            for line in file.readlines():
+            for line in file:
                 line = [int(number) for number in line[:-1].split(" ")]
 
                 if line_number == 0:
                     map_value.set_infos(line[0], line[1], line[2])
 
-                if line_number == 1:
+                elif line_number == 1:
                     for _id, score in enumerate(line):
                         book = Book(_id, score)
                         map_value.add_book(book)
