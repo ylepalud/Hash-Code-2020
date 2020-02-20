@@ -1,5 +1,6 @@
 import numpy as np
 import argparse
+from Parser import Parser
 
 
 def show_banner():
@@ -8,13 +9,19 @@ def show_banner():
             print(line[:-1])
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("input", help="Input file")
-    args = parser.parse_args()
-    path_to_input_file = args.input
+def get_args():
+    arg_parser = argparse.ArgumentParser()
+    arg_parser.add_argument("input", help="Input file")
+    args = arg_parser .parse_args()
+    return args.input
 
+
+if __name__ == '__main__':
     show_banner()
+    path_to_input_file = get_args()
+
+    parser = Parser(path_to_input_file)
+    parser.parse()
     # Parsing
     # Solving
     # Scoring
