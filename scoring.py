@@ -8,8 +8,12 @@ def total_score_library(library: Library):
     return total
 
 
-def efficiency_library(library: Library):
-    return total_score_library(library) / ((library.books_per_day * library.number_of_books) + library.signup_time)
+def efficiency_library(library: Library, remaining_days_total):
+    total_days_library = (library.books_per_day * library.number_of_books) + library.signup_time
+    if total_days_library < remaining_days_total:
+        return efficiency_remaining_days(remaining_days_total, library)
+    else:
+        return total_score_library(library) / total_days_library
 
 
 def efficiency_remaining_days(days: int, library: Library):
