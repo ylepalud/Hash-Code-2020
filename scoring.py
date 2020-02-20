@@ -13,5 +13,14 @@ def efficiency_library(library):
 
 
 def efficiency_remaining_days(days, library):
+    score = 0
     days_of_scan = days-library.signup_time
     books_scanned = days_of_scan*library.books_per_day
+    list_books = library.get_books()
+    for i in range(books_scanned):
+        score += list_books[i].score
+    return score
+
+
+def effeciency_on_given_days(days, library):
+    return efficiency_remaining_days(days, library)
