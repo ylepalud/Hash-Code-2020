@@ -30,7 +30,7 @@ class Library:
             pass
 
     def sort_books(self):
-        self.book_list.sort(key=lambda x: x.score, reverse=False)
+        self.book_list.sort(key=lambda x: x.score, reverse=True)
 
     def send_next_books(self):
         if self.index_last_send_book is None:
