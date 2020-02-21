@@ -35,6 +35,7 @@ if __name__ == '__main__':
     submited_libraries = []
 
     for day_number in range(map_value.total_scanning_day):
+        print(day_number)
         if len(libraries) == 0:
             pass
         # Si on peut soumettre une nouvelle library
@@ -42,7 +43,7 @@ if __name__ == '__main__':
             # On recalcule efficiency pour chaque library et on trie les library
             for library in libraries:
                 library.efficiency = scoring.efficiency_library(library, map_value.total_scanning_day - day_number)
-            libraries.sort(key=lambda x: x.efficiency, reverse=False)
+            libraries.sort(key=lambda x: x.efficiency, reverse=True)
 
             last_elected_library = libraries[0]
             remaining_days_before_next_library_submission = last_elected_library.sign_up_days
